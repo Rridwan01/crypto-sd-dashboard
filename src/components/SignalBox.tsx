@@ -16,40 +16,40 @@ function SignalBox({
   lastUpdate
 }: SignalBoxProps) {
   
-  // Dynamic styling based on the signal type
   const isBullish = type === 'bullish';
   
-  const baseColor = isBullish ? 'text-[#00ff00]' : 'text-[#ff0000]';
-  const borderColor = isBullish ? 'border-[#003300]' : 'border-[#330000]';
-  const bgColor = isBullish ? 'bg-[#001a00]/40' : 'bg-[#1a0000]/40';
+  const baseColor = isBullish ? 'text-emerald-400' : 'text-rose-400';
+  const borderColor = isBullish ? 'border-emerald-900/60' : 'border-rose-900/60';
+  const bgColor = isBullish ? 'bg-emerald-950/10' : 'bg-rose-950/10';
   const icon = isBullish ? '▲' : '▼';
 
   return (
-    <div className={`border ${borderColor} ${bgColor} p-4 rounded flex flex-col gap-3 font-mono`}>
-      {/* Header: Asset + Signal */}
-      <div className="flex justify-between items-center border-b border-gray-800/50 pb-2">
-        <div className="text-xs text-gray-400 tracking-widest uppercase">{asset} TRADE SIGNAL</div>
+    <div className={`border border-gray-700/60 bg-[#121212] rounded p-4 flex flex-col justify-between font-mono h-full`}>
+      <div className="flex flex-col gap-3">
+        <div className="flex justify-between items-center border-b border-gray-700/60 pb-2">
+          <div className="text-[10px] text-gray-500 tracking-widest uppercase">{asset} TRADE SIGNAL</div>
+        </div>
+
+        {/* The tinted signal box inside the card */}
+        <div className={`border ${borderColor} ${bgColor} p-3 rounded-sm`}>
+          <div className={`text-lg font-bold tracking-widest ${baseColor} mb-2`}>
+            {signalText}
+          </div>
+          <div className="text-xs text-gray-400 flex items-start gap-2 leading-relaxed">
+            <span className="text-gray-600 mt-0.5">✓</span>
+            <p>{reasoning}</p>
+          </div>
+        </div>
       </div>
 
-      {/* Main Signal Text */}
-      <div className={`text-xl font-bold tracking-widest ${baseColor}`}>
-        {signalText}
-      </div>
+      <div className="flex flex-col mt-4">
+        <div className={`py-2 px-3 border ${borderColor} ${baseColor} text-xs font-bold flex items-center gap-2 bg-[#0d0d0d] rounded-sm`}>
+          <span>{icon}</span> {actionText}
+        </div>
 
-      {/* Reasoning / Institutional Logic */}
-      <div className="text-xs text-gray-300 flex items-start gap-2">
-        <span className="text-gray-500">✓</span>
-        <p>{reasoning}</p>
-      </div>
-
-      {/* Action Button / Alert */}
-      <div className={`mt-2 py-1 px-2 border ${borderColor} ${baseColor} text-xs font-bold flex items-center gap-2 bg-black/40`}>
-        <span>{icon}</span> {actionText}
-      </div>
-
-      {/* Footer / Timestamp */}
-      <div className="text-[10px] text-gray-600 mt-1 uppercase tracking-widest">
-        LAST UPDATE: {lastUpdate}
+        <div className="text-[10px] text-gray-600 mt-3 uppercase tracking-widest px-1">
+          LAST UPDATE: {lastUpdate}
+        </div>
       </div>
     </div>
   );
