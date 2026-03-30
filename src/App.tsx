@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#e5e5e5] p-6 font-mono selection:bg-gray-700">
       {/* Main Grid Container: Max width for ultrawide screens, 2 columns on desktop */}
-      <div className="max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="max-w-400 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Header Section (Spans both columns) */}
         <header className="lg:col-span-2 flex justify-between items-end border-b border-gray-800 pb-4 mb-2">
           <div>
